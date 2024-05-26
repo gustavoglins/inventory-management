@@ -8,11 +8,14 @@ public class Product {
     private Double price;
     private Integer quantity;
 
-    public Product(Integer id, String name, Double price, Integer quantity) {
-        this.id += 1;
+    public Product() {
+    }
+
+    public Product(String name, Double price, Integer quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.id++;
     }
 
     public Integer getId() {
@@ -49,9 +52,6 @@ public class Product {
 
     @Override
     public String toString(){
-        return "\nID: " + getId() +
-                "\nName: " + getName() +
-                "\nPrice: " + getPrice() +
-                "\nQuantity: " + getQuantity();
+        return "ID: " + getId() + " " + getName() + " US$" + String.format("%.2f", getPrice()) + " | Quantity: " + getQuantity();
     }
 }

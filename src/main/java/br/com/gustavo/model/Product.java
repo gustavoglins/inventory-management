@@ -1,5 +1,7 @@
 package br.com.gustavo.model;
 
+import java.util.Objects;
+
 @SuppressWarnings("unused")
 public class Product {
 
@@ -48,6 +50,19 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package br.com.gustavo.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -14,33 +15,43 @@ public class InventoryManager {
 
     //TODO Fazer metodos retornarem String, ao inves de imprimir
 
-    public void registerProduct(Product product) {
+    public String registerProduct(Product product) {
         if (!products.contains(product)) {
             products.add(product);
-            System.out.println("Product registered successfully.");
-        } else{
-            System.out.println("This product has already been registered.");
+            return "Product registered successfully.";
+        } else {
+            return "This product has already been registered.";
         }
     }
 
-    public void removeProduct(Product product) {
-        if(products.contains(product)){
-            products.remove(product);
-            System.out.println("Product removed successfully.");
-        } else{
-            System.out.println("Product not registered.");
+    public String removeProduct(String name) {
+        boolean found = false;
+        Iterator<Product> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getName().equalsIgnoreCase(name)) {
+                iterator.remove();
+                found = true;
+            }
+        }
+        if (found) {
+            return "Product removed successfully";
+        } else {
+            return "Product not registered";
         }
     }
 
-    public void listProduct() {
+    public List<String> listProduct() {
+        List<String> productString = new ArrayList<>();
         for (Product product : products) {
-            System.out.println(product);
+            productString.add(product.toString());
         }
+        return productString;
     }
 
-    public void searchProduct(String name) {
+    public String searchProduct(String name) {
+        boolean found = false;
         if (!products.isEmpty()) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getName().equalsIgnoreCase(name)) {
                     System.out.println(product);
@@ -48,16 +59,17 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Product not found or not registered");
+                return "Product not found or not registered";
             }
         } else {
-            System.out.println("No products registered yet.");
+            return "No products registered yet.";
         }
+        return null;
     }
 
-    public void searchProduct(int id) {
+    public String searchProduct(int id) {
+        boolean found = false;
         if (!products.isEmpty()) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getId().equals(id)) {
                     System.out.println(product);
@@ -65,11 +77,12 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Product not found or not registered.");
+                return "Product not found or not registered.";
             }
         } else {
-            System.out.println("No products registered yet.");
+            return "No products registered yet.";
         }
+        return null;
     }
 
     public void updateQuantity(int action, String name, int quantity) {
@@ -81,7 +94,7 @@ public class InventoryManager {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 System.out.println("Error! Product not found or not registered.");
             }
         } else if (action == 2) {
@@ -92,10 +105,10 @@ public class InventoryManager {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 System.out.println("Error! Product not found or not registered.");
             }
-        } else{
+        } else {
             System.out.println("Error! Please enter a valid action.");
         }
     }
@@ -109,7 +122,7 @@ public class InventoryManager {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 System.out.println("Error! Product not found or not registered.");
             }
         } else if (action == 2) {
@@ -120,45 +133,49 @@ public class InventoryManager {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 System.out.println("Error! Product not found or not registered.");
             }
-        } else{
+        } else {
             System.out.println("Error! Please enter a valid action.");
         }
     }
 
-    public void updatePrice(String name, double price) {
-        if(!products.isEmpty()){
-            boolean found = false;
-            for(Product product : products){
-                if(product.getName().equalsIgnoreCase(name)){
+    public String updatePrice(String name, double price) {
+        boolean found = false;
+        if (!products.isEmpty()) {
+            for (Product product : products) {
+                if (product.getName().equalsIgnoreCase(name)) {
                     product.setPrice(price);
                     found = true;
                 }
             }
-            if(!found){
-                System.out.println("Error! Product not found or not registered.");
-            }
-        } else{
-            System.out.println("No products registered.");
+        } else {
+            return "No products registered.";
+        }
+        if (found) {
+            return "Price updated successfully.";
+        } else {
+            return "Error! Product not found or not registered.";
         }
     }
 
-    public void updatePrice(int id, double price) {
-        if(!products.isEmpty()){
-            boolean found = false;
-            for(Product product : products){
-                if(product.getId().equals(id)){
+    public String updatePrice(int id, double price) {
+        boolean found = false;
+        if (!products.isEmpty()) {
+            for (Product product : products) {
+                if (product.getId().equals(id)) {
                     product.setPrice(price);
                     found = true;
                 }
             }
-            if(!found){
-                System.out.println("Error! Product not found or not registered.");
-            }
-        } else{
-            System.out.println("No products registered.");
+        } else {
+            return "No products registered.";
+        }
+        if (found) {
+            return "Price updated successfully.";
+        } else {
+            return "Error! Product not found or not registered.";
         }
     }
 }

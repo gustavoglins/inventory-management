@@ -15,8 +15,6 @@ public class App {
     final static InventoryManager inventoryManager = new InventoryManager();
     final Product product = new Product();
 
-    //TODO criar e implementar exceptions personalizadas
-
     public static void main(String[] args) {
         brand();
         menu();

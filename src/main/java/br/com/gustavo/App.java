@@ -167,63 +167,79 @@ public class App {
 
     private static void updateQuantity() {
         System.out.println("\n----- Update product quantity -----");
-        System.out.println("Update quantity by name or id? ");
+        System.out.println("Update quantity by name or ID? ");
         System.out.println("|   1   | - By name");
-        System.out.println("|   2   | - By id");
+        System.out.println("|   2   | - By ID");
 
         int action2 = getAction();
 
+        // By name
         if (action2 == 1) {
             System.out.print("Enter the product name: ");
             input.nextLine();
             String name = input.nextLine();
 
-            System.out.println("\nProduct selected: ");
-            inventoryManager.searchProduct(name);
+            boolean signal = inventoryManager.thisProductExit(name);
+            if(signal){
+                System.out.println("\nProduct selected: ");
+                inventoryManager.searchProduct(name);
 
-            System.out.println("\nDo you want to increase or decrease the product quantity? ");
-            System.out.println("|   1   | - Increase");
-            System.out.println("|   2   | - Decrease");
+                System.out.println("\nDo you want to increase or decrease the product quantity? ");
+                System.out.println("|   1   | - Increase");
+                System.out.println("|   2   | - Decrease");
 
-            int action = getAction();
+                int action = getAction();
 
-            int quantity = 0;
-            if (action == 1) {
-                System.out.print("Enter the quantity for increase: ");
-                quantity = input.nextInt();
+                int quantity = 0;
+                if (action == 1) {
+                    System.out.print("Enter the quantity for increase: ");
+                    quantity = input.nextInt();
 
-            } else if (action == 2) {
-                System.out.print("Enter the quantity for decrease: ");
-                quantity = input.nextInt();
+                } else if (action == 2) {
+                    System.out.print("Enter the quantity for decrease: ");
+                    quantity = input.nextInt();
+                }
+
+                String message = inventoryManager.updateQuantity(action, name, quantity);
+                System.out.println(message);
+            } else{
+                System.out.println("Error! Product not found or not registered.");
             }
 
-            inventoryManager.updateQuantity(action, name, quantity);
-
+            // By ID
         } else if (action2 == 2) {
-            System.out.print("Enter the product id: ");
+            System.out.print("Enter the product ID: ");
+            //TODO tratar erro!
             int id = input.nextInt();
 
-            System.out.println("\nProduct selected: ");
-            inventoryManager.searchProduct(id);
+            boolean signal = inventoryManager.thisProductExit(id);
+            if(signal){
+                System.out.println("\nProduct selected: ");
+                inventoryManager.searchProduct(id);
 
-            System.out.println("\nDo you want to increase or decrease the product quantity? ");
-            System.out.println("|   1   | - Increase");
-            System.out.println("|   2   | - Decrease");
+                System.out.println("\nDo you want to increase or decrease the product quantity? ");
+                System.out.println("|   1   | - Increase");
+                System.out.println("|   2   | - Decrease");
 
-            int action = getAction();
+                int action = getAction();
 
-            int quantity = 0;
-            if (action == 1) {
-                System.out.print("Enter the quantity for increase: ");
-                quantity = input.nextInt();
+                int quantity = 0;
+                if (action == 1) {
+                    System.out.print("Enter the quantity for increase: ");
+                    quantity = input.nextInt();
 
-            } else if (action == 2) {
-                System.out.print("Enter the quantity for decrease: ");
-                quantity = input.nextInt();
+                } else if (action == 2) {
+                    System.out.print("Enter the quantity for decrease: ");
+                    quantity = input.nextInt();
+                }
+
+                String message = inventoryManager.updateQuantity(action, id, quantity);
+                System.out.println(message);
+            } else{
+                System.out.println("Error! Product not found or not registere.");
             }
 
-            inventoryManager.updateQuantity(action, id, quantity);
-
+            // Invalid action
         } else {
             System.out.println("Error! Please enter a valid option.");
             updateQuantity();
@@ -232,9 +248,9 @@ public class App {
 
     private static void updatePrice() {
         System.out.println("\n----- Update product price -----");
-        System.out.println("Update price by name or id?");
+        System.out.println("Update price by name or ID?");
         System.out.println("|   1   | - By name");
-        System.out.println("|   2   | - By id");
+        System.out.println("|   2   | - By ID");
 
         int action = getAction();
 
@@ -250,7 +266,7 @@ public class App {
             System.out.println(message);
 
         } else if (action == 2) {
-            System.out.print("Enter the product id: ");
+            System.out.print("Enter the product ID: ");
             int id = input.nextInt();
             System.out.println("\nProduct selected: ");
             inventoryManager.searchProduct(id);

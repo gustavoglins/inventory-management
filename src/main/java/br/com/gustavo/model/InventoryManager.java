@@ -83,30 +83,26 @@ public class InventoryManager {
         return null;
     }
 
-    //TODO
     public String updateQuantity(int action, String name, int quantity) {
+        // Increase quant
         if (action == 1) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getName().equalsIgnoreCase(name)) {
                     product.setQuantity(product.getQuantity() + quantity);
-                    found = true;
+                    return "Quantity updated successfully.";
                 }
             }
-            if (!found) {
-                return "Error! Product not found or not registered.";
-            }
+
+            // Decrease quant
         } else if (action == 2) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getName().equalsIgnoreCase(name)) {
                     product.setQuantity(product.getQuantity() - quantity);
-                    found = true;
+                    return "Quantity updated successfully.";
                 }
             }
-            if (!found) {
-                return "Error! Product not found or not registered.";
-            }
+
+            // Invalid action
         } else {
             return "Error! Please enter a valid action.";
         }
@@ -114,28 +110,25 @@ public class InventoryManager {
     }
 
     public String updateQuantity(int action, int id, int quantity) {
+        // Increase quant
         if (action == 1) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getId().equals(id)) {
                     product.setQuantity(product.getQuantity() + quantity);
-                    found = true;
+                    return "Quantity updated successfully.";
                 }
             }
-            if (!found) {
-                return "Error! Product not found or not registered.";
-            }
+
+            // Decrease quant
         } else if (action == 2) {
-            boolean found = false;
             for (Product product : products) {
                 if (product.getId().equals(id)) {
                     product.setQuantity(product.getQuantity() - quantity);
-                    found = true;
+                    return "Quantity updated successfully.";
                 }
             }
-            if (!found) {
-                return "Error! Product not found or not registered.";
-            }
+
+            // Invalid action
         } else {
             return "Error! Please enter a valid action.";
         }
@@ -178,5 +171,21 @@ public class InventoryManager {
         } else {
             return "Error! Product not found or not registered.";
         }
+    }
+
+    public boolean thisProductExit(String name){
+        boolean exist = false;
+        for(Product product : products){
+            exist = product.getName().equalsIgnoreCase(name);
+        }
+        return exist;
+    }
+
+    public boolean thisProductExit(int id){
+        boolean exist = false;
+        for(Product product : products){
+            exist = product.getId().equals(id);
+        }
+        return exist;
     }
 }

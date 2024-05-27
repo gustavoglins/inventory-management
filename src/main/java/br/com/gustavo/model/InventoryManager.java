@@ -13,8 +13,6 @@ public class InventoryManager {
         this.products = new ArrayList<>();
     }
 
-    //TODO Fazer metodos retornarem String, ao inves de imprimir
-
     public String registerProduct(Product product) {
         if (!products.contains(product)) {
             products.add(product);
@@ -85,7 +83,8 @@ public class InventoryManager {
         return null;
     }
 
-    public void updateQuantity(int action, String name, int quantity) {
+    //TODO
+    public String updateQuantity(int action, String name, int quantity) {
         if (action == 1) {
             boolean found = false;
             for (Product product : products) {
@@ -95,7 +94,7 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Error! Product not found or not registered.");
+                return "Error! Product not found or not registered.";
             }
         } else if (action == 2) {
             boolean found = false;
@@ -106,14 +105,15 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Error! Product not found or not registered.");
+                return "Error! Product not found or not registered.";
             }
         } else {
-            System.out.println("Error! Please enter a valid action.");
+            return "Error! Please enter a valid action.";
         }
+        return "Unexpected error! Please try again in a few minutes.";
     }
 
-    public void updateQuantity(int action, int id, int quantity) {
+    public String updateQuantity(int action, int id, int quantity) {
         if (action == 1) {
             boolean found = false;
             for (Product product : products) {
@@ -123,7 +123,7 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Error! Product not found or not registered.");
+                return "Error! Product not found or not registered.";
             }
         } else if (action == 2) {
             boolean found = false;
@@ -134,11 +134,12 @@ public class InventoryManager {
                 }
             }
             if (!found) {
-                System.out.println("Error! Product not found or not registered.");
+                return "Error! Product not found or not registered.";
             }
         } else {
-            System.out.println("Error! Please enter a valid action.");
+            return "Error! Please enter a valid action.";
         }
+        return "Unexpected error! Please try again in a few minutes.";
     }
 
     public String updatePrice(String name, double price) {

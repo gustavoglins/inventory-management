@@ -1,6 +1,6 @@
 # Inventory Management App
 
-Welcome to the Inventory Management App, a simple console application to manage your product inventory. This app allows you to register, remove, list, search, and update products in your inventory.
+Welcome to the Inventory Management App, a simple console application to manage your product inventory. 
 
 ### Features:
 - Register Products

@@ -11,7 +11,6 @@ public class ApplicationService {
 
     final static InventoryManager inventoryManager = new InventoryManager();
     private static final Scanner input = new Scanner(System.in);
-    final Product product = new Product();
 
     public ApplicationService() {
     }
@@ -98,12 +97,31 @@ public class ApplicationService {
 
     public void removeProduct() {
         System.out.println("\n----- Remove product -----");
-        System.out.print("Enter the product name to be removed: ");
-        input.nextLine();
-        String name = input.nextLine();
+        System.out.println("Remove by ID or name: ");
+        System.out.println("|   1   | - By name");
+        System.out.println("|   2   | - By ID");
 
-        String message = inventoryManager.removeProduct(name);
-        System.out.println(message);
+        int action = getAction();
+
+        if (action == 1) {
+            System.out.print("Enter the product name to be removed: ");
+            input.nextLine();
+            String name = input.nextLine();
+
+            String message = inventoryManager.removeProduct(name);
+            System.out.println(message);
+
+        } else if (action == 2) {
+            System.out.print("Enter the product id to be removed: ");
+            int id = input.nextInt();
+
+            String message = inventoryManager.removeProduct(id);
+            System.out.println(message);
+
+        } else {
+            System.out.println("Error! Please enter a valid action.");
+            removeProduct();
+        }
     }
 
     public void listProducts() {
@@ -114,15 +132,19 @@ public class ApplicationService {
         for (String productString : productStrings) {
             System.out.println(productString);
         }
+
+        System.out.println("-------------------------");
     }
 
     public void searchProduct() {
         System.out.println("\n----- Search product -----");
-        System.out.print("Search by id or name? ");
+        System.out.println("Search by ID or name? ");
+        System.out.println("|   1   | - By name");
+        System.out.println("|   2   | - By ID");
 
-        String action = input.next().trim();
+        int action = getAction();
 
-        if (action.equalsIgnoreCase("name")) {
+        if (action == 1) {
             System.out.print("Enter the product name: ");
             input.nextLine();
             String name = input.nextLine();
@@ -130,12 +152,16 @@ public class ApplicationService {
             String message = inventoryManager.searchProduct(name);
             System.out.println(message);
 
-        } else if (action.equalsIgnoreCase("id")) {
-            System.out.print("Enter the product id: ");
+        } else if (action == 2) {
+            System.out.print("Enter the product ID: ");
             int id = input.nextInt();
 
             String message = inventoryManager.searchProduct(id);
             System.out.println(message);
+
+        } else {
+            System.out.println("Error! Please enter a valid action.");
+            searchProduct();
         }
     }
 

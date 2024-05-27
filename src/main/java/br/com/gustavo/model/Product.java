@@ -5,7 +5,9 @@ import java.util.Objects;
 @SuppressWarnings("unused")
 public class Product {
 
-    private Integer id = 0;
+    private static int counter = 1;
+
+    private Integer id;
     private String name;
     private Double price;
     private Integer quantity;
@@ -17,7 +19,8 @@ public class Product {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.id++;
+        this.id = counter;
+        counter++;
     }
 
     public Integer getId() {

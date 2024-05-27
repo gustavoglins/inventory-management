@@ -39,6 +39,23 @@ public class InventoryManager {
         }
     }
 
+    public String removeProduct(int id) {
+        boolean found = false;
+        Iterator<Product> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getId().equals(id)) {
+                iterator.remove();
+                found = true;
+            }
+        }
+        if (found) {
+            return "Product removed successfully";
+        } else {
+            return "Product not registered";
+        }
+    }
+
     public List<String> listProduct() {
         List<String> productString = new ArrayList<>();
         for (Product product : products) {

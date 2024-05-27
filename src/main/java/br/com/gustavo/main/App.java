@@ -1,4 +1,4 @@
-package br.com.gustavo;
+package br.com.gustavo.main;
 
 import br.com.gustavo.service.ApplicationService;
 

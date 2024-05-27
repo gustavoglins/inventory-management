@@ -28,6 +28,7 @@ public class ApplicationService {
         System.out.println("|   3   | - List all products");
         System.out.println("|   4   | - Search for a product");
         System.out.println("|   5   | - Update product");
+        System.out.println("|   6   | - Stock report");
         System.out.println("|   0   | - Exit");
 
         int action = getAction();
@@ -51,6 +52,10 @@ public class ApplicationService {
                 break;
             case 5:
                 updateProduct();
+                menu();
+                break;
+            case 6:
+                stockReport();
                 menu();
                 break;
             case 0:
@@ -301,6 +306,11 @@ public class ApplicationService {
             System.out.println("Error! enter a valid option.");
             updatePrice();
         }
+    }
+
+    public void stockReport() {
+        String message = inventoryManager.generateStockReport();
+        System.out.println(message);
     }
 
     public void exitProgram() {

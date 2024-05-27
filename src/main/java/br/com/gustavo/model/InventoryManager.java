@@ -190,6 +190,10 @@ public class InventoryManager {
         }
     }
 
+    public String generateStockReport() {
+        return StockReportGenerator.generateReport(this.products);
+    }
+
     public boolean thisProductExit(String name) {
         boolean exist = false;
         for (Product product : products) {

@@ -173,17 +173,17 @@ public class InventoryManager {
         }
     }
 
-    public boolean thisProductExit(String name){
+    public boolean thisProductExit(String name) {
         boolean exist = false;
-        for(Product product : products){
+        for (Product product : products) {
             exist = product.getName().equalsIgnoreCase(name);
         }
         return exist;
     }
 
-    public boolean thisProductExit(int id){
+    public boolean thisProductExit(int id) {
         boolean exist = false;
-        for(Product product : products){
+        for (Product product : products) {
             exist = product.getId().equals(id);
         }
         return exist;

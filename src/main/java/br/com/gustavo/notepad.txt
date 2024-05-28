@@ -1,28 +1,23 @@
 New functions to be implemented:
 
-    *Application Service*
-    https://chatgpt.com/share/285cdc0d-aa7a-41bd-9f42-371836d9218b
+    working on {
+
+    }
 
     Transaction History:
-    Record all performed transactions (addition, removal, update) in a history for future reference and auditing.
-
-    Reports:
-    Generate detailed reports about the inventory, such as:
-    Products with low stock.
-    Best-selling products.
-    Products with the highest value in stock.
+        Record all performed transactions (addition, removal, update) in a history for future reference and auditing.
 
     Data Export:
-    Add the ability to export the product list or reports in formats like CSV or PDF.
+        Add the ability to export the product list or reports in formats like CSV or PDF.
 
     Authentication and Authorization:
-    Implement a login system for different user levels (administrator, operator), with specific permissions for each.
+        Implement a login system for different user levels (administrator, operator), with specific permissions for each.
 
     Data Validation:
-    Add more robust validations when registering and updating products, ensuring that the entered data is valid.
+        Add more robust validations when registering and updating products, ensuring that the entered data is valid.
 
     Stock Notifications:
-    Send notifications (via email or alert system) when a product's stock is low.
+        Send notifications (via email or alert system) when a product's stock is low.
 
     Graphical User Interface:
-    Consider adding a graphical user interface using frameworks like JavaFX or Swing to make the system more user-friendly.
+        Consider adding a graphical user interface using frameworks like JavaFX or Swing to make the system more user-friendly.

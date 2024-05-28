@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+@SuppressWarnings("unused")
 public class ApplicationService {
 
     final static InventoryManager inventoryManager = new InventoryManager();
@@ -84,6 +85,36 @@ public class ApplicationService {
         return action;
     }
 
+    public int getInt() {
+        boolean validAction = false;
+        int intValue = -1;
+        while (!validAction) {
+            try {
+                intValue = input.nextInt();
+                validAction = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error! Please enter a valid integer number.");
+                input.next();
+            }
+        }
+        return intValue;
+    }
+
+    public double getDouble() {
+        boolean isValid = false;
+        double doubleValue = 0.0;
+        while (!isValid) {
+            try {
+                doubleValue = input.nextDouble();
+                isValid = true;
+            } catch (InputMismatchException e) {
+                System.out.print("Error! Please enter a valid value.\n");
+                input.next();
+            }
+        }
+        return doubleValue;
+    }
+
     public void registerProduct() {
         System.out.println("\n----- Register product -----");
         System.out.print("Enter the product name: ");
@@ -91,10 +122,10 @@ public class ApplicationService {
         String name = input.nextLine();
 
         System.out.print("Enter the product price: ");
-        double price = input.nextDouble();
+        double price = getDouble();
 
         System.out.print("Enter the amount of products available: ");
-        int quantity = input.nextInt();
+        int quantity = getInt();
 
         String message = inventoryManager.registerProduct(new Product(name, price, quantity));
         System.out.println(message);
@@ -118,7 +149,7 @@ public class ApplicationService {
 
         } else if (action == 2) {
             System.out.print("Enter the product id to be removed: ");
-            int id = input.nextInt();
+            int id = getInt();
 
             String message = inventoryManager.removeProduct(id);
             System.out.println(message);
@@ -159,7 +190,7 @@ public class ApplicationService {
 
         } else if (action == 2) {
             System.out.print("Enter the product ID: ");
-            int id = input.nextInt();
+            int id = getInt();
 
             String message = inventoryManager.searchProduct(id);
             System.out.println(message);
@@ -220,11 +251,11 @@ public class ApplicationService {
                 int quantity = 0;
                 if (action == 1) {
                     System.out.print("Enter the quantity for increase: ");
-                    quantity = input.nextInt();
+                    quantity = getInt();
 
                 } else if (action == 2) {
                     System.out.print("Enter the quantity for decrease: ");
-                    quantity = input.nextInt();
+                    quantity = getInt();
                 }
 
                 String message = inventoryManager.updateQuantity(action, name, quantity);
@@ -288,17 +319,17 @@ public class ApplicationService {
             System.out.println("\nProduct selected: ");
             inventoryManager.searchProduct(name);
             System.out.print("\nEnter the product new price: US$");
-            double price = input.nextDouble();
+            double price = getDouble();
             String message = inventoryManager.updatePrice(name, price);
             System.out.println(message);
 
         } else if (action == 2) {
             System.out.print("Enter the product ID: ");
-            int id = input.nextInt();
+            int id = getInt();
             System.out.println("\nProduct selected: ");
             inventoryManager.searchProduct(id);
             System.out.print("\nEnter the product new price: US$");
-            double price = input.nextDouble();
+            double price = getDouble();
             String message = inventoryManager.updatePrice(id, price);
             System.out.println(message);
 

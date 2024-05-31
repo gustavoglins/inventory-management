@@ -7,6 +7,7 @@ public class Product {
 
     private static int counter = 1;
 
+    private String teste;
     private Integer id;
     private String name;
     private Double price;

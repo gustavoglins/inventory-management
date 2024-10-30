@@ -2,13 +2,17 @@
 
 Welcome to the Inventory Management App, a simple console application to manage your product inventory. 
 
-### Features:
+## Features:
 - Register Products
 - Remove a Products
 - List All Products
 - Search for a Product
 - Update a Product
 - Generate Stock Reports
+
+## Project Preview
+
+![Project Preview](src/main/assets/project-preview.png)
 
 ### How to use:
 
